@@ -7,7 +7,8 @@ int main ()
 	std::cout << "pointer = " << reinterpret_cast<int>(pointer);
 
 	pointer = nullptr;
-	if (!pointer) {	//if (pointer != nullptr) //it's the same //pointer is 0
+	if (!pointer) 	//if (pointer == nullptr) //it's the same //pointer is 0
+	{
 		std::cout << "\npointer = " << reinterpret_cast<int>(pointer);
 	}
 }
