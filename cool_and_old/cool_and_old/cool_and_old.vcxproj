@@ -154,7 +154,15 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="class.cpp" />
+    <ClCompile Include="containers.cpp" />
     <ClCompile Include="cool_and_old.cpp" />
+    <ClCompile Include="exceptions.cpp" />
+    <ClCompile Include="file_operations.cpp" />
+    <ClCompile Include="key_press.cpp" />
+    <ClCompile Include="math_definition.cpp" />
+    <ClCompile Include="namespace.cpp" />
+    <ClCompile Include="only_correct_value.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -162,9 +170,19 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="hidden_parameter.cpp" />
+    <ClCompile Include="pointer_to_function.cpp" />
     <ClCompile Include="polish_language.cpp" />
     <ClCompile Include="random.cpp" />
+    <ClCompile Include="rounding.cpp" />
+    <ClCompile Include="sort.cpp" />
+    <ClCompile Include="special_characters_pl.cpp" />
+    <ClCompile Include="string_and_char.cpp" />
     <ClCompile Include="struct.cpp" />
+    <ClCompile Include="threads.cpp" />
+    <ClCompile Include="time_operation.cpp" />
+    <ClCompile Include="type_limits.cpp" />
+    <ClCompile Include="varieties_of_the_type_int.cpp" />
+    <ClCompile Include="what_this.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
