@@ -11,4 +11,10 @@ int main ()
 	{
 		std::cout << "\npointer = " << reinterpret_cast<int>(pointer);
 	}
+
+	char cc{ 'g' }, *wc;
+	void *wv = reinterpret_cast<char*>(cc);
+	wc = &cc;
+	
+	return 0;
 }
