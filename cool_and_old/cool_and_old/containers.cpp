@@ -10,36 +10,36 @@
 
 int main_7 () {
 
-	std::vector<double> tableFirst;
-	std::vector<int> tableSecond{ 2,4,5,6,7,8,9 };
+	std::vector<double> arrayFirst;
+	std::vector<int> arraySecond{ 2,4,5,6,7,8,9 };
 
-	tableFirst.push_back (12.3);
-	tableFirst.push_back (3);
-	tableFirst.push_back (1.5);
+	arrayFirst.push_back (12.3);
+	arrayFirst.push_back (3);
+	arrayFirst.push_back (1.5);
 
-	tableSecond.push_back (0);
+	arraySecond.push_back (0);
 
-	tableFirst.pop_back ();
+	arrayFirst.pop_back ();
 
-	std::cout << tableFirst[0] << "\n";
-	std::cout << tableFirst[1] << "\n";
-	std::cout << tableFirst.size () << "\n";
+	std::cout << arrayFirst[0] << "\n";
+	std::cout << arrayFirst[1] << "\n";
+	std::cout << arrayFirst.size () << "\n";
 
 	/*------------------------------------------------------*/
 
-	std::vector<char> tableChar (3, '.');	//table of 3 char in all value is a .
-	std::vector<int> tableInt (10);		//table 10 elements
+	std::vector<char> arrayChar (3, '.');	//array of 3 char in all value is a .
+	std::vector<int> arrayInt (10);		//array 10 elements
 
-	tableChar[1] = '*';
+	arrayChar[1] = '*';
 
-	std::vector<std::string> tableString;
-	tableString.push_back ("Hello");
-	tableString.push_back ("Bye");
+	std::vector<std::string> arrayString;
+	arrayString.push_back ("Hello");
+	arrayString.push_back ("Bye");
 
-	tableChar.erase (tableChar.begin (), tableChar.end ());		//clear all vector
-	tableChar.resize (3);		//set size to 3
+	arrayChar.erase (arrayChar.begin (), arrayChar.end ());		//clear all vector
+	arrayChar.resize (3);		//set size to 3
 
-	tableString.clear ();
+	arrayString.clear ();
 
 	/*------------------------------------------------------*/
 
@@ -152,10 +152,10 @@ int main_7 () {
 
 	std::cout << "\n";
 
-	std::array<int, 10> table;	//this is normal table but more expanded
-	table[0] = 3;
-	table[9] = 0;
-	std::cout << table.size () << "\n";
+	std::array<int, 10> array;	//this is normal array but more expanded
+	array[0] = 3;
+	array[9] = 0;
+	std::cout << array.size () << "\n";
 
 	return 0;
 }

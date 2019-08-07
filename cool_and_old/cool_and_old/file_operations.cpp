@@ -151,17 +151,17 @@ int main_6 () {
 	/*--------------------------------------------------------------------*/
 
 	//write file with the csv (excel) extension
-	std::ofstream tableOut ("dane.csv");
-	if (tableOut.is_open ()) {
+	std::ofstream arrayOut ("dane.csv");
+	if (arrayOut.is_open ()) {
 		for (int column = 1; column <= 20; column++) {
 			for (int row = 1; row <= 6; row++) {
-				tableOut << column * row;
-				if (row != 6) tableOut << ',';
+				arrayOut << column * row;
+				if (row != 6) arrayOut << ',';
 			}
-			if (column != 20) tableOut << std::endl;
+			if (column != 20) arrayOut << std::endl;
 		}
 
-		tableOut.close ();
+		arrayOut.close ();
 	}
 
 	/*--------------------------------------------------------------------*/
@@ -171,22 +171,22 @@ int main_6 () {
 	system ("cls");
 
 	//read file with the csv (excel) extension
-	std::ifstream tableIn ("dane.csv");
-	if (tableIn.is_open ()) {
+	std::ifstream arrayIn ("dane.csv");
+	if (arrayIn.is_open ()) {
 		int temp;
 		for (int column = 1; column <= 20; column++) {
 			for (int row = 1; row <= 6; row++) {
-				tableIn >> temp;
+				arrayIn >> temp;
 				std::cout << temp;
 				if (row != 6) {
 					std::cout << "\t";
-					tableIn.ignore (1, ',');
+					arrayIn.ignore (1, ',');
 				}
 			}
 			if (column != 20) std::cout << std::endl;
 		}
 
-		tableIn.close ();
+		arrayIn.close ();
 	}
 
 	/*--------------------------------------------------------------------*/

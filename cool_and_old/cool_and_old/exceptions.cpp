@@ -4,6 +4,7 @@
 #include <exception>	//obsluda wyjatkow
 #include <string>
 #include <limits>
+#include <new>
 
 #pragma warning (disable : 4290)
 
@@ -45,6 +46,8 @@ double Devide (double a, double b);
 long long int* Alloc ();
 
 extern void command_a ();
+
+void fun_exeption ();
 
 int main_22 () {
 	{
@@ -145,6 +148,7 @@ int main_22 () {
 		}
 
 		try {
+			std::set_new_handler (fun_exeption);
 			alloc = Alloc ();
 		}
 		catch (MyException& e) {
@@ -242,8 +246,9 @@ double Devide (double a, double b) {
 long long int* Alloc () {	//alokuje pamiec az jej zabraknie
 	long long int* t;
 	while (true) {
-		t = new (std::nothrow) long long int[1000000];	//() nie rzucaj wyjatkow //a jak tego niema to wyrzuci std::bad_alloc
-		if (!t) throw(MyException ("Braklo pamieci"));	//samemu wyrzucam blad
+		t = new (std::nothrow) long long int[1000000];	//() nie rzucaj wyjatkow //a jak tego niema to wyrzuci std::bad_alloc //bez tego zadziala 
+																															//funkcja fun_exception
+		if (!t) throw(MyException ("Braklo pamieci"));	//samemu wyrzucam blad //tylko z tym w new (std::nothrow)
 	}
 	return t;
 }
@@ -256,4 +261,10 @@ void command_a () {
 		const char bad[] = "Nonnegative input expected in command a";
 		throw bad;
 	}
+}
+
+void fun_exeption () 
+{
+	std::cout << "set_new_halder work\n";
+	throw std::bad_alloc();
 }

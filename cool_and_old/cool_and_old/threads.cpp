@@ -5,6 +5,8 @@
 #include <chrono>
 #include <time.h>
 
+#pragma warning (disable : 4244)
+
 using namespace std;
 
 int resting (int a) {
