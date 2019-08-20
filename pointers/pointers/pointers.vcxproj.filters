@@ -29,5 +29,11 @@
     <ClCompile Include="practic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="pointers_to_function.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="overloading.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

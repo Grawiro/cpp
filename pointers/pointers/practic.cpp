@@ -10,7 +10,7 @@ char* fun_dopisz (char* napisz, int rozmiar);
 
 void funkcja ();
 
-int main ()
+int main_2 ()
 {
 	{
 		char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
