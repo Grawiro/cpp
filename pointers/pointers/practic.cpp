@@ -74,7 +74,7 @@ int main_2 ()
 		for (int nr_figury = 0; nr_figury < 3; nr_figury++)
 		{
 
-			std::cout << "Na jakim polu szachownicy umiescic nowy obiekt"
+			std::cout << " Na jakim polu szachownicy umiescic nowy obiekt"
 				" typu long: Podaj symbol literowy [A-H]";
 			char litera;
 			std::cin >> litera;
