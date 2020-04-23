@@ -1,0 +1,9 @@
+void bin(int number)
+{
+	int rest= number%2;
+	if(number>1)
+	{
+		bin(number/2);
+	{
+	std::cout<<rest;
+}

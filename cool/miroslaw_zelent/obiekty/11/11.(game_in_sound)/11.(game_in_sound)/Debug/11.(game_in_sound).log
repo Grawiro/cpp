@@ -1,0 +1,4 @@
+﻿  plansza.cpp
+c:\users\grawiro\source\repos\projekty\miroslaw_zelent\obiekty\11\11.(game_in_sound)\11.(game_in_sound)\plansza.h(447): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  plansza.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  11.(game_in_sound).vcxproj -> C:\Users\Grawiro\source\repos\projekty\miroslaw_zelent\obiekty\11\11.(game_in_sound)\Debug\11.(game_in_sound).exe

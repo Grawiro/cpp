@@ -1,0 +1,713 @@
+ctrl+space przywraca intelliSense (czyli to okienko z podpowiedziami)
+
+cerr
+stderr
+
+
+//konwencja wywolania
+__cdecl;
+__stdcall;
+__fastcall;
+__thiscall;
+
+//type of pointer
+type* 		//normal
+const type* 	//pointer to const
+type* const 	// const pointer
+const type* const 	//const pointer to const
+
+cout<<"Hello world\r";	//\r to powrot do poczatku linijki i ustawienie tam kursora
+cout<<"Hi";		//wynikiem tego jest Hillo world
+
+//funkcje nie zwracajace wyjatkow
+int none1 () noexcept {return 1;}
+int none2 () noexcept;
+int none2 () noexcept {return 2;}
+std::cout << none1 ()<<"\n";
+std::cout << none2 ()<<"\n";
+
+std::unique_ptr;	//posiadane
+std::shared_ptr;	//wspoldzielone
+std::weak_ptr;	//dla tych co moga "zawisnac"
+
+//to zamiast new niby
+std::make_unique;
+std::make_shared;
+
+//odwolania
+std::move;	//do r-wartosci
+std::forward;	//uniwersalne
+
+//stosowac 1 do 2 aby przekazywac w za pomoca 3
+decltype;		//1
+auto&&;		//2
+std::forward;	//3
+
+//lambda ma byc zamiast tego
+std::bind;
+	
+//jak potrzeba asynchronicznosci
+std::launch::async;
+
+//ma byc nieprzylaczalny na wszystkich sciezkach
+std::thread;
+
+//wspolbierznosc
+std::atomic;
+
+\r\n	//znak nowej lini w odczycie binarnym
+
+//for each
+
+std::cin.sync ();	//czysci strumien chyba
+std::getline (std::cin, name);	//zapisz z cin do name cala linie
+
+//konstruktor kopiujacy
+Data a;		//klasa z ktorej beda kopiowane wartosci	
+Data b (a);	//obie sa poprawne jesli chodzi o kopiowanie
+Data c = b;	//wszystkie teraz maja te same wartosici w zmiennych
+
+Data (const Data& data) {//co kopiujemy i do czego}	//wlasny konstruktor kopiujacy
+
+//konstruktor przenoszacy
+void Move (Data& data) {this->pointer = data.pointer; data.pointer = nullptr;}	//to przenosi wskaznik z jednego obiektu 
+								//do drugiego
+Data a;Data b;
+b.Move (a);	//1 sposob
+
+//kolejny
+Data(Data&& data) : pointer(data.pointer)
+{data.pointer = nullptr}
+
+Data a;
+Data b = std::move (a);	//2 sposob
+
+//przeniesienie wartosci z jednego vectora na inny z wyzerowanie liczy elementow w 1 i usuniecu jego wskazika na nie 
+std::vector<int> Process(std::vector<int>& v) {return std::move (v);}
+
+void a (const int& b) { std::cout << b << std::endl; }	//stala referencja
+
+#define M 3.2	//m jest stalo
+
+int tab[3] = {};
+int* wsk = tab;	//lub = &tab[0];	//to samo
+
+std::cout << *(wsk + 1);	//to samo co tab[1]
+std::cout << "\n" << M << "\n";
+
+char sts[] = "abc";
+
+//wskaznik w funkcji
+void w (int* ws) { *ws *= 4; }
+int wsk = 3;
+w (&wsk);
+std::cout << wsk;
+
+//zakresowe for z referencja
+int tab[3] = {};
+for (auto item : tab) {std::cout << item << std::endl;}
+for (auto& item : tab) {item = 9;}
+
+//array moze byc stringiem
+//enum moze byc indeksem array
+
+//moze zadziala kiedys a jak nie to sprawdzic to podobno sumuje wartosci w vectorze
+#include <vector>
+#include <algorithm>
+std::accumulate (vec.begin (), vec.end (), 0);
+
+std::getline (std::cin, napis, 'p');	//pobieraj cala linie za do 'p' enter przenosi sie takze do stringa napis
+std::getline (std::cin, napis);		//zapisz cala linie do entera w napis
+
+int x{}; 		//domyslnie 0
+
+endl		//czysci tez strumien
+
+switch (x) {case 1: {break;}}		//przy case mozna stosowac {}
+
+//lambda
+auto wyswietl = [](string x)->void {cout << x << endl; };
+int main(){
+string napis = "Siema ziom";
+wyswietl ([] (string x)->string { return x.erase(5,x.size()); }(napis)); }
+
+xor - exclusive or ^ //co to robi
+
+&a	//operator referencji	//pobrania adresu
+*a 	//operator dereferencji
+
+//unie
+union k{
+int a;
+int b; };
+k d;
+d.a =12;		//zmieniajac 1 parametr zmienia sie je wszyskie 
+
+setlocale(LC_ALL, " ");	//polski tekst?
+cin.sync();	//czysci bufor (usuwa zapamietane wartosci zapamietane przez cin)
+'\0' //znak pusty NULL
+
+#pragma once
+
+using std::cout;
+using std::cin;
+
+cin.get();		//czekaj na wpisanie czegos (tak tylko enter)
+znak = cin.get();	//pobierz tekst do zmiennej znak potrzebny enter na koncu
+znak = _getch();	//pobierz znak bez entera do zmiennej znak
+
+//tablice w funkcji
+int t[5] = { 1,2,3,2,1 };
+f3 (t, 5);
+int f3 (int tablica[], int n) {}
+
+//wskazniki
+int* X;
+int y=0;
+X=&y;	//& podaje adres zmiennej czyli X przechowuje adres tej zmiennej
+*X=3;	//wpisz do tego co jest pod wskaznikiem 3 czyli y=3;
+	//* - operator wyluskania
+	//& - operator pobrania adresu! (ten sam znaczek, który u¿ywamy do referencji)
+
+int* x = new int;	//zostaw miejsce gdzies w pamieci na int i zworc adres
+*x=9;	//wpisz w to miejsce 9 965230.9/78621.0+98*650312*/920014578/itp.\
+41018/*92.00258/lete x\
+
+int* g;
+int r = 3;
+memcpy(g,&r,4*1);	//przekopiuj wartosc z r do g, 4 to rozmiar zmiennej w bajtach
+		//r i g to inne zmienne
+
+int* tablica = new int [32];
+&(tablica[0])	//adres 0 elementu w tablicy
+tablica		//to to samo co &(tablica[0])
+cout << *tablica <<" " << *(tablica+0) << " " << tablica[0] << endl;	//to samo
+delete[] tablica;	//usun tablice
+
+int* tablica = new int[3]{3,2,4};	//odrazu z wypelnieniem
+
+int* dub = new int [5];
+int tub[] = {3,4,3,2,1};
+memcpy(dub,&tub,4*5);	//przekopiuj wartosc z tub do dub, 4 to rozmiar zmiennej w bajtach, 5 to liczba elementow
+
+//stringi
+string s1, s2;
+s1.append(s2); 	//s1=s1+s2;
+s1.append(s2,6,5); 	//dodaj do s1, 5 znakow z s2 liczac od 6 znaku
+s1.append(10,'#'); 	//do s1 dodaj 10 znakow #
+s1.assign(s2);	//s1=s2;
+s1.back();		//ostatni znak
+s1.begin();	//iterator pierwszego znaku
+s1.end();		//iterator ostatniego znaku
+s1.cbegin();	//iterator pierwszego znaku
+s1.cend();	//iterator ostatniego znaku
+s1.crbegin();	//iterator odwrotny
+s1.crend();	//iterator odwrotny
+s1.capacity();	//ile pamieci zajmuje nasz napis
+s1.max_size();	//ile max znakow pomiesci nasz napis
+s1.size();		//ile znakow znajduje sie w  naszym napisie
+s1.length();	//ile znakow znajduje sie w  naszym napisie
+s1.reserve(256);	//zmiana capacity
+s1.clear();	//usuwa zawartosc
+s1.compare(s2);	//??
+s1.c_str();	//zamiana na char[]
+s1.empty();	//czy jest puste
+s1.erase(0,4);	//kasuje fragment od 0 znaku 4 znaki 
+s1.shrink_to_fit();	//dopasowuje ilosc pamieci do dlugosci napisu
+s1.swap(s2);	//zamien napisy s1 z s2
+s1.insert(10,s2);	//wstaw do 10 znaku cale s2
+s1.replace(0,9,s2);	//zastap od 0 do 9 znaku tekstem s2
+s1.substr(4,5);	//usun wszytko poza 5 znakami liczac do 4 znaku
+s1.pop_back();	//usuwa ostatni znak
+s1.push_back('!');	//dodaje ostatni znak
+s1.find(txt);	//szukaj tekstu z txt w s1
+s1.find("kon");	//szukaj kon w s1
+
+int a = stoi (temp3,&pointer,10);	//stoi to zamien na i = int temp3 ,size_t pointer i 10 to decymalnie
+				//16 //2 //8 //0 - domysl sie
+				//sto to rzutowanie a ostatnia to typ np //stoi //stol //stod
+to_string(521);			//zamienia na stringa
+
+for (string::iterator i = s1.begin(); i != s1.end (); i++) {
+	cout << *i << " ";
+}
+for (auto i = s1.cbegin (); i != s1.cend (); i++) {
+	cout << *i << " ";
+}
+for (auto i = s1.crbegin (); i != s1.crend (); i++) {
+	cout << *i << " ";
+}
+while ((found_index = s1.find ('a', found_index + 1)) != string::npos) {
+	cout << "a = " << found_index << endl;
+}
+while ((found_index = s1.find_first_of (txt, found_index + 1)) != string::npos) {
+	
+s1[found_index] = '*';	
+}
+for (int i = s.size()-1; i >=0; i--) {
+	se+=s[i];
+}
+
+string::npos;	//stala pusta w napisach
+
+//char[] napisy
+strcmp(txt1,txt2);		//porownoje char[]
+strcpy_s (txt1, "zaba");	//wpisuje txt1 zaba 
+
+//wywolania funkcji
+void f1 (int* x) {}	
+//f1 (&x);
+void f2 (int* &x) {}		
+//f2 (z);	z musi byc wskaznikiem
+void showArray (int* tab, int n) {}
+//showArray (tab, 4);	//int tab[4] = { -2, 10, 4, 0 };
+int* f3 () {return new int;}
+//auto* r = f3 ();	//np tak
+
+//dzialanie na plikach
+odczyt.clear(); 		// czyszysc flage eof() - powiedz ze plik sie jeszcze nie skonczyl
+odczyt.seekg(0); 		// ustawiam na poczatku ponownie (na pierwszy znak) w pliku do odczytu
+getline(odczyt,temp);	//odczytaj cala linie z pliku odczyt , temp to zmienna string
+odczyt.get(znak);		//odczytuj po kolei znaki z pliku odczyt i zapisz je w zmiennej char znak
+odczyt >> x[0] >> x[1];	//zapisz to co przed spacja do x[0], a po do x[1]	//10 203	//int x[2];
+odczyt.tellg();		//na ktorym znaku w tekscie jestem
+odczyt.ignore(10,';');	//pomin maks 10 znakow az napotkasz na ;
+			//jesli po ; nie bedzie tego czego szukal to wpisze wszedzie o
+			//jesli przed ; bedzie zaduzo to takze wszedzie wpisze o
+odczyt.seekg(0,odczyt.end);	//ustawienie na ostatnia pozycje //odczyt.tellg(); //pokarze teraz ile jest znakow w pliku
+odczyt.read(blok,odczyt.tellg());	//odczytaj wszytko do blok //char blok[odczyt.tellg()+1];
+zapis.seekp(7);	//przesun sie na pozycje 7 w pliku do zapisu
+zapis.put('t');	//nadpisz znak na t w miejscu na ktorym jest ustawiony seekp
+zapis.tellp();	//gdzie jestem
+zapis.write(t,5);	//zapisz t to bedzie 5 znakow 	//char t[]="-----";
+
+//operatory bitowe
+0010 << 2;	//1000	//przesuniecie o 2 w lewo
+0100 >> 2;	//0001	//przesuniecie o 2 w prawo	//1 moze wypasc poza zakres
+0101&1110;	//0100	//bitowy iloczyn logiczny
+1001|1100;	//1101	//bitowa suma logiczna
+1101^0100;	//1011	//bitowa roznica symetryczna
+~1001;		//0110	//bitowa negacja
+
+//zamiana liczby na binarna	(gotowa funkcja)
+string bit2str (unsigned long long int bit, int podstawa = 4) {
+unsigned long long int maks = pow (2, podstawa - 1); // 2 do potêgi podstawa - 1
+if (bit == 0) return "0";
+string str = "";
+for (unsigned long long int temp = maks; temp > 0; temp = temp >> 1) {
+if (temp & bit) str += "1";
+	else str += "0";}
+return str;}
+
+
+//sstream	//te same funkcje co w fstream tylko stosowane na tekscie
+stringstream ss;
+ss.str();	//wyswietla wszystko co jest w zmiennej ss
+
+//tablice dynamiczne
+int* tab = new int[10];
+//2D
+int** tablica2D = new int*[10];
+tablica2D[0] = new int[10];
+tablica2D[1] = new int[10];
+//3D
+int*** tablica3D = new int**[10];
+for (int a = 0; a < 10; a++) {
+	tablica3D[a] = new int*[10];
+}
+for (int a = 0; a < 10; a++) {
+	for (int b = 0; b < 10; b++) {
+		tablica3D[a][b] = new int[10];
+	}
+}
+
+//usuwanie
+delete[] tab;
+//2D
+for (int i = 0; i < 2; i++){
+	delete[] tablica2D[i];
+}
+delete[] tablica2D;
+//3D
+for (int i = 0; i < 10; i++) {
+	for (int j = 0; j < 10; j++) {
+		delete[] tablica3D[i][j];
+	}
+	delete[] tablica3D[i];
+}
+delete[] tablica3D;
+
+//jesli tego nie ma to, to wlacz, a jak juz jest to, to pomin
+#ifndef main
+#define main
+//tu cialo pliku *.hpp lub *.h
+#endif // !main
+
+//stl //standardowa biblioteka szablonow //standard template library
+
+for (auto x : K)	//elementy k kolejno staja sie wartosciami x
+
+//wzorce 
+regex pattern ("(.*?)([0-9]+)(.*)");
+pattern = "[0-9]+([, -//]+)";	//tu po , jest spacja co oznacza ze spacje tez szuka
+.	//dowolny znak
+*	//dowolna ilosc
++	//przynajminej jeden
+?	//nie badz zachlanny
+[ zbior]	//znaki ze zbioru
+()	//zapamietaj
+/( /) /. /[ /] /+ /* /? // 	//te znaki musza byc poprzedzone /
+{2}	//dokladnie 2
+{6,}	//do 6
+{,3}	//max 3
+{1,6}	//od 1 do 6
+[a-z]
+[A-Z]
+[0-9]
+[a-zA-Zo]	//od a-z i do A-Z i np polskie o z kreska
+^	//poczatek napisu
+$	//konca napisu
+(...)	//3 jakie kolwiek znaki
+
+pattern = "[a-zA-Z]{2}(...)";
+napis = regex_replace (napis, pattern, "$1");	//zamien 2 litery na 3 kolejne potem po tych 3 zamin kolejne 2 na kolejne 3 
+pattern = "([0-9]{2})-([0-9]{3})";
+ "$2-$1"	//$2 oznacza 2 nawias () w pattern a $1 pierwszy //w praktyce zamien 2 z 1 i miedzy nimi wpisz -
+regex_replace();	//znajdz i zmien
+regex_search();	//znajdz
+regex_match();	//dopasuj do wzorca
+smatch matches;	//tu sie to dopasowanie zapisuje
+
+//ulamki 
+#include <ratio>
+ratio <3,4> x;	//licznik,mianownik
+x.num;	//licznik
+x.den;	//mianownik	
+ratio_add < ratio<1, 2>, ratio<2, 3>>sum;	//dodaj 1/2 do 2/3 i zapisz w sum
+jednostki w ratio
+      yocto 1 / 1 000 000 000 000 000 000 000 000 (opcjonalna)
+      zepto 1 / 1 000 000 000 000 000 000 000 (opcjonalna)
+      atto 1 / 1 000 000 000 000 000 000
+      femto 1 / 1 000 000 000 000 000
+      pico 1 / 1 000 000 000 000
+      nano 1 / 1 000 000 000
+      micro 1 / 1 000 000
+      milli 1 / 1 000
+      centi 1 / 100
+      deci 1 / 10
+      deca 10
+      hecto 100
+      kilo 1 000
+      mega 1 000 000
+      giga 1 000 000 000
+      tera 1 000 000 000 000
+      peta 1 000 000 000 000 000
+      exa 1 000 000 000 000 000 000
+      zetta 1 000 000 000 000 000 000 000 (opcjonalna)
+      yotta 1 000 000 000 000 000 000 000 000 (opcjonalna)
+
+typedef ratio_multiply<nano, ratio<7, 1>> seven_nano;
+
+//error C2679 brak biblioteki <string>
+
+//ciekawe sytuacje z inkrementacja i dekrementacja oraz z cout
+int c=1;	 	//zawsze bedzie 1
+int b= ++c + ++c;	//b==6; 1 c to 1 ale ++ to 2 a jak zwiekszymy jeszcze 2 c o 1 to i 1 i 2 c to 3
+b=-1 + ++c + ++c;	//b==4; (-1 + ++c)+ ++c //zwiekszymy 1 c o 1 ale odrazu do tego 1 c odejmiemy 1 a 2 c znowu zmieni c na 2 takze 2+2=4
+b=++c + ++c -1;	//b==5; 1 przypadek -1
+b=-1 + (++c + ++c);	//b==5; kolejnosc dzialan czyli 1 przypadek -1
+cout<<++c<<++c;	//c==3; w obu przypadkach bo cout to jeden strumien;
+cout<<c++<<c++;	//c==2, c==1 / dlatego ze cout oblicza wartosci od tylu a nie do przodu xD
+cout<f(2)<<f(3);	//tu dobrze sie pokazalo na ekranie ale w funkcji juz nie
+cout<<g[0]<<g[1];	//i tu jest juz 3 i 2 zamiast 2 i 3
+a tu te funkcje i zmienna
+int g[2];
+int f(int x){
+static int i=0;
+g[i]=x;
+i++;
+return x;}
+
+//zamiana elementow miejscami vektor
+vector<int> test = { 1,2,3,4,5 };
+swap (test[0], test[3]);
+
+//obsluga watkow
+#include <future>
+#include <chrono>
+#include <thread>
+this_thread::sleep_for (chrono::milliseconds (150));	//czekaj 150 milis na tym watku
+future<int> result1 = async (launch::async, resting, 65);	//wymus start funkcji, resting to nazwa funkcji po , podajemy argumenty np 65
+future<int> result2 = (async(resting, 65));		//moze wystartowac a nie musi 
+result1.get ();			//pobiez wartosc ale tylko raz program czeka do tego momentu zanim pojdzie dalej
+result1.valid ();			//czy pobralem getem wartosc
+result1.wait ();			//czekaj na zakonczenie watku
+thread thread1 (nothingness, '!', 45);	//utwoz watek //nothingness to funkcja a '!' i 45 to jej argumenty 
+thread1.join ();			//czekaj na zakonczenie procesu
+this_thread::get_id ();		//pobierz id tego watku
+thread1.detach ();			//watek dziala niezaleznie od procesu glownego, moze dzialac nawet po zakonczeniu programu
+
+//rzucanie wyjatkow
+try{}	//try sprobuj
+throw 1;	//rzuc wyjatek //throw musi byc wewnatrz try
+catch (int a){}	//zlap tylko inty
+catch (...) {}	//zlap wszystko
+
+class Kamil{};	//nazwy class z duzych
+_pokazSie	//nazwa zmiennej prywatnej
+
+extern void pokaz();		//w pliku naglowkowym aby byl widoczny w programie
+			//cialo jest w pokaz.cpp a deklaracja w pokaz.hpp
+Pojazd* pojazd1[0] =&pojazdek;
+pojazd1[0]->elo();		//to samo
+(*pojazd1[0]).elo();
+
+//wskaznik na funkcje
+int dodawanie();
+int (*wskaznik)();		//tu w nawiasie nie dajemy nic
+wskaznik=&dodawanie;	//tu nazwa funkcji bez nawiasu
+cout<<wskaznik()<<endl;	//tu w nawiasie parametry funkcji
+
+string tab[3]={"ala","ola","ela"};
+tab[2];			//zwraca ela
+
+static int a;	//w class poj.hpp w kazdym obiekcie bedzie to samo //nawet w klassach dziedzicznych
+int poj::a;		//w poj.cpp
+poj::a=5;		//przypisywanie wartosci w main	//nowe lepsze
+pojazd.a =3;	//pojazd obiekt lkasy a
+
+//ignoruj wczesniej wpisane rzeczy
+cin.ignore ();
+
+//zapisz wszystko co jest wpisane w lini
+string x;
+getline (cin, x);
+
+//zamiana z string na int
+int x = atoi(dane.c_str());
+
+//zamiania z string na float
+liczby[licznik] = atof (dane.c_str ());
+
+//zamiania wszystkie znaki na mala  
+#include <algorithm>
+transform (dane.begin (), dane.end (), dane.begin (), ::tolower); //dane to typ string
+::tolower	 //na male
+::toupper	 //na duze
+#include <cctype>	//this work too
+std::tolower
+
+
+//pobierz znak
+_getch(); 		//rozne wersje
+getchar(); getchar();
+	
+//console error
+if (!(cin >> nMiesiac)){cerr << "To nie jest liczba. "; exit (1);}	//to jest kod zwrotny programu
+
+//zabezpieczenia 
+void MyTerminate (){cout << "\n--- UWAGA: blad mechanizmu wyjatkow ---\n"; exit (1);}	
+set_terminate (MyTerminate);
+
+//pokazywanie bledow podczas kompilacji
+constexpr int liczba_butow = 43;
+static_assert ((liczba_butow % 2) == 0, "Blad: liczba_butow musi byc parzysta");	 //(wyrazenie logiczne , "tekst bledu") wyrazenie logiczne musi dzialac na stalych typu constexpr
+static_assert(sizeof (int) == 2, "Blad: Typ int nie jest 2-bitowy"); 			//inny przyklad
+
+//szablon
+template <typename T> T max (T a, T b) {return (a > b ? a : b);}
+cout << "Wieksza jest liczba " << max (Liczba1, Liczba2);	//wywolanie
+
+//definicja funkcji szblon
+auto pomnozenie (int a, double b) -> double {return a * b;}
+
+//szablonay funkcji
+auto pomnozenie (int a, double b) -> double;		//zwracany typ to double	
+auto dodanie (int k, double r) -> decltype(k);		//zwracany typ to int
+
+template <class T>
+T addCrap (T a, T b) {return a + b;}
+int a = 7, b = 4, z;
+z = addCrap<int> (a, b);
+
+//liczba statyczna
+static int nLicznik = 0;	
+
+//operacje na plikach
+fstream::out 	//zapis w pliku
+fstream::in	//odczyt z pliku
+fstream::app 	//dopisz do pliku
+fstream::trunc	//stworz nowy plik
+ios::out		//moze byc ios zamiast fsteam
+	
+//przerywanie zapisu do pliku Ctrl+Z
+while (cin >> idNumber >> name >> money) {theFile << idNumber << ' ' << name << " " << money << endl;}
+
+//przerywanie obiegu petli i wykonanie warunku sprawdzajacego
+for(int i=0; i<12; i++){
+continue;  
+}
+
+//systemy liczbowe
+0x 	//szesnastkowy
+0	//osemkowy
+0b	//binarny
+
+//zapis z wykladnikiem e
+double a = 8e2; 
+double a = 8e-2;
+double a = 8.3e2;
+double a = 8.3e-2;
+
+//wskazniki
+int* X;
+int y=0;
+X=&y;	//& podaje adres zmiennej czyli X przechowuje adres tej zmiennej
+*X=3;	//wpisz do tego co jest pod wskaznikiem 3 czyli y=3;
+
+//wskazuje zerowy adres komurki w pamieci
+wskaznik = nullptr; 
+
+//znaki specjalne
+\b	//backspace
+\t	//tabulator
+\n	//nowa linia
+\a	//alarm (sygnal windows)
+\\	//backslashe
+\'
+\"
+\?
+\0	//znak null
+
+//przestrzen nazw
+using std::cout;		//tylko jedna nazwa
+using namespace std;	//cala przestrzen
+
+//przyslanianie nazw
+int a = 1;
+int main()
+int a = 2;		//zaslonieta nazwa
+cout << a << ::a;	 //a to jest 2, a ::a to 1
+
+//typ auto do gubienia stalosci
+const int stala = 10;
+constexpr int stala_2 = 20;
+auto j = stala;		//sam int bez const i tak mozna z kazda
+const auto n = 10; 		//od teraz bedzie typu const int
+
+//decltype
+unsigned int obj = 5; 			//pomocnicza
+using typ_roboczy1 = decltype(obj);		//typ_roboczy ma ten sam typ co obj
+using typ_roboczy2 = decltype(obj*2.76);	//typ double
+typ_roboczy2 a;				//typ double
+
+//wyrazenia warunkowe
+cout << (((a==1) || (a==0)) ? ((a) ? "TAK" : "NIE") : "inna wartosc.");	//((1warunek) ? [1warunekTRUE(2warunek ? 2warunekTRUE : 2warunekFALSE)] : 1warunekFALSE);
+int d = (((a == 1) || (a == 0)) ? ((a) ? 20 : 10) : 0);
+
+//zyskaie adresu zmiennej
+double x;
+&x;
+
+//sprawdzanie rozmiery typu i zmiennej
+sizeof (int);
+sizeof (a);
+
+//operatory rzutowania
+int (3.14);				//nie zalecane
+(int) 3.14;				//z tych dwoch ten pierwszy lepszy
+static_cast<int>(3.14);		//polega na konwersji liczb zmiennoprzcinkowych na calkowite i odwrotnie
+const_cast<>();			//sluzy do pracy na stalych i volatilte (ale chyba tylko na wskaznikach)
+dynamic_cast<>();			//sluzy do pracy na klasach i type void (ale chyba na wskaznikach)
+reinterpret_cast<>();		//sluzy do zmiany typu wskaznika na inny typ wskaznika
+
+//operator przecinka
+(1+1,232-32,12-32;1+2)	//wynikiem tego wyrazenia bedzie 3 poniewaz jest nim wartosc najbardziej z prawej strony
+
+//stringi
+#include <string>				//potrzebne
+string solar{ "Panel-sloneczny" }; 		//zainicjalizowany
+if (imie == "Kamil")				//mozna porownywac
+rozkaz = "Naprawic " + solar;			//naprawic panel-sloneczny
+rozkaz += " natychmiast";			//dopisze to na koncu
+if (solar < antena)				//co jest wszesniej w alfabecie (operacje typu <, <=,>, >=, == dzialaja)
+string liczba_tekstowo = to_string (5);		//to_string() zapisz to w formie stringa to_string (zmienna tez moze byc)
+int szer = rozkaz.size () + 6;			//zmienna string .size () //Pobiera wielkosc stringa w znakach
+string kreska (szer,'*');			//to jest inna definicja stringa (ile razy powtorzyc, wybrany znak)
+
+//wektory
+#include <vector> 
+vector<double> czynniki1;
+vector<string> kompozytorzy{ "F.Chopin", "J.S.Bach", "B.Bartok","C.Debussy" };
+vector<int> ww{ 9, 4, 7, -6, 2, 7 };
+ww[0]				//wyswietlanie zawartosci
+ww[1] = 2;			//zmiana zawarosci z 4 na 2
+ww.size ();			//tak ja w stringu pokazuje ile jest komorek w wektorze
+if (ww[nr] == 2)			//porownanie wartosci z danej komorki
+vector<char> symbole (10);		//tu symbole maja 10 miejsc w tablicy (wektorze) ale pustych miejsc
+vector<char>litery (12, '.');		//tak jak w przypadku stringa (ile razy powtorzyc, jaki znak) kazda komorka w wektorze ma ten sam znak
+litery[10] = 'X';			//zmiana zawarotsci komórki 11
+muzycy.push_back ("Chopin");	//dopisanie na koncu (w ostaniej nowo utworzonej komorce)
+
+//zakresowe for
+vector<double> liczby{ 3.14, 4.4, -6.6, 7.7 };
+for (auto elem : liczby)			//auto nazwa_byle_jaka : nasza tablica (wektor lub zwykla moze byc tez string)
+{cout << elem << ", ";}			//petla przebiega od poczatku do konca tablicy
+for(auto &k : liczby){k = k * 10;}		//& oznacza prace na orginalach
+for (auto nr : przyslowie){cout << "-" << nr;}	//praca na stringu tez bedzie przechodzil po kolejnych literach ze stringa
+for (auto x : { 6, 9, 3, 8, 4, 7, 5, 7 })		//tu przelatuje po kolejnych wartosciach ktore wpisalismy z kazdym obiegiem jest inna wartosc
+{cout << x << ", ";}
+int tablica[]{ 100, 200, 300, 50 };		//zwykza tablica
+for (auto &n : tablica){cout << n << ", ";		//pokazanie ze zakresowe for tez dziala na zwykle tablice
+n++;}					//zwykle tablice mozna inkrementowac
+for (const auto &elem : liczby)		//przekazuje orginaly ale nie mozna ich zmieniac
+{cout << elem << ", ";}
+
+//tablica z jednakowym wypelnieniem
+int tab[20]={5};
+
+//deklaracje funkcji
+int przypadek (void);					//nie ma argumentow
+char znak_x ();						//nie ma argumentow
+void pin (...);						//jeszcze nie wiadomo jakie ma argumenty
+
+//ninazwany argument
+void ton (int /*wysokosc*/)	//lub void ton(int)	//to samo
+
+//sposoby przesylania argumentow
+void przesylanie_przez_wartosc (int wart);						//kopia
+void przesylanie_przez_referencje_Lwartosci (int & przezwisko_lwartosci);			//orginal
+void przesylanie_przez_referencje_constLwartosci (const int & przezwisko_stalej_lwartosci);	//orginal (nie mozna modyfikowac)
+void przesylanie_przez_referencje_Rwartosc (int && przezwisko_wartosci_chwilowej);		//wartosci chwilowe (nieistotne)
+
+//argumenty domniemane
+void funkcja (int a = 2, int b = 6);		//argumenty domniemane trzeba pisac od prawej strony
+funkcja();					//wywolanie funkcji takie samo jak funkcja(2,6)
+void funkcja (int a, int b = 8);			//nie mozna powtarzac deklaracji z warosciami domniemanymi (chyba ze w innym zakresie waznosci)
+void funkcja (int a = kwadrat(globalny1), int b);	//funkcja wywoluje inna funkcje aby zdobyc wartosc domniemana dla swojego argumentu
+					//zmienna lokalna nie moze byc uzyta jako wartosc domniemana natomiast zmienna globalna juz tak
+void funkcja (int a, int b){} 			//w definicji nie podajemy wartosci domniemanych
+
+//typy_danych:
+wchar_t a = L'a';		//wchar_t zapisuje znaki w standardzie UNICODE
+char16_t a;		//char16_t dla kodowanie UTF-16
+char32_t a;		//char32_t dla kodowanie UTF-32
+char c = '\x63';		// 'c'
+int8_t a;			//typy int o okreslonej szerokosci
+uint64_t a;
+intmax_t a;		//typy int o najwiekszej dostepnej szerokosci
+uintmax_t a;
+intptr_t a;		//typy int zdolne przechowac najwiekszy adres komurki w pamieci
+uintptr_t a;
+
+//inne typy
+register int a;	//zmienna ktora kompilator powinien umiescic w rejestrze
+volatile int a;	 //kompilator ma sprawdzac za kazdym razem wartosc zmiennej
+
+//wlasna nazwa typu
+typedef long long int a_t;	 //a_t przedstawia teraz typ long long int
+using b_type = long long int;
+a_t c;			//c jest teraz typu long long int
+b_type d{ 22 };
+const a_t e{ 34 };		//stala typu long long int
+volatile b_type f;

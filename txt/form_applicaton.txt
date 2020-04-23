@@ -1,0 +1,161 @@
+//to aby wogole zadzialalo
+using namespace System;
+[STAThreadAttribute]
+
+int main () {
+	Windows::Forms::Application::Run (gcnew My7helloWorld::MyForm ());
+
+	return 0;
+}
+
+//przezroczystosc czegos
+label1->Parent = pictureBox1;
+label1->BackColor = Color::Transparent;
+
+//otwieranie przegladarki z applikacji
+#include <stdlib.h>
+
+system ("start https://www.youtube.com/");
+
+//zapisywanie i otwieranie nowych plikow
+saveFileDialog1->ShowDialog ();
+File::WriteAllText (saveFileDialog1->FileName,textBox1->Text);
+
+openFileDialog1->ShowDialog ();
+textBox1->Text = File::ReadAllText ( openFileDialog1->FileName);
+
+//zmiana czcionki
+fontDialog1->ShowDialog ();
+textBox1->Font=fontDialog1->Font;
+
+//wywolywanie innej formy
+My8notatnik::MyForm1 forma1;
+forma1.ShowDialog ();
+
+//wywolywanie innej formy
+MyForm1^ forma1 = gcnew MyForm1();
+forma1->Show ();
+
+//zamykanie aplikacji
+Application::ExitThread ();
+
+//wczytywanie zdjec
+pictureBox1->Load ("img/nic.bmp");
+
+//MessageBox
+switch (MessageBox::Show ("Co pokazac?", "gorna belka", MessageBoxButtons::YesNo, MessageBoxIcon::Question)) {
+	case System::Windows::Forms::DialogResult::Yes:
+		break;
+	case System::Windows::Forms::DialogResult::No:
+		break;
+}
+
+//int na string i string na String^
+#include <string>
+
+int liczba;
+std::string staryString;
+
+liczba = 1;
+staryString = std::to_string (liczba);
+String^ nowyString = gcnew String (staryString.c_str ());
+
+label1->Text = nowyString;
+
+//polozenie w przestrzeni
+//top i left to punkt w lewym gornym rogu
+pictureBox1->Left;
+pictureBox1->Top;
+//a tu wszystkie wymiary pictureBox1
+pictureBox1->Left + pictureBox1->Width;
+pictureBox1->Top + pictureBox1->Height;
+
+//logiczne porownanie w przestrzeni 
+>= 	//znajduje sie bardziej na lewo niz / jest wyzej niz
+<= 	//znajduje sie bardziej na prawo niz / jest nizej niz
+-	//w lewo i dol
++	//w prawo i gore
+
+pictureBox1->Left >= pictureBox2->Left - pictureBox1->Width	//lewy bok pictureBox1 jest bardziej na lewo niz lewy bok pictureBox2 + szerokosc pictureBox1
+pictureBox1->Left <= pictureBox2->Left + pictureBox2->Width	//lewy bok pictureBox1 jest bardziej na prawo niz prawy bok pictureBox2
+pictureBox1->Top >= pictureBox2->Top - pictureBox1->Height	//gora pictureBox1 jest wyzej niz gora pictureBox2 + wysokosc pictureBox1
+pictureBox1->Top <= pictureBox2->Top + pictureBox2->Height	//gora pictureBox1 jest nizej niz dol pictureBox2
+
+//przemieszczanie obiektu w przestrzeni
+pictureBox1->Left += 1;	//zmiennia np. int
+pictureBox1->Top += 1;
+
+//klawisze np
+if (e->KeyCode==Keys::Left)	//co ma sie stac;
+if (e->KeyCode==Keys::Right)
+
+//dzwiek w programie
+//winmm.lib must add to Additional Dependencies
+#include <Windows.h>
+#include <mmsystem.h>
+
+sndPlaySound (TEXT("sciezka.wav"), SND_ASYNC);	//jedno z tych
+PlaySound (TEXT("sciezka.wav"), NULL,SND_ASYNC);
+
+PlaySound (TEXT("snd/dzwiek.wav"), NULL,SND_FILENAME|SND_LOOP| SND_ASYNC);	//dzwiek odtwarzany w petli
+
+//losowe liczby
+#include <time.h>
+
+int liczby[10];
+
+srand (time (NULL));	//to raz w programie
+
+for (int i = 0; i < 10; i++) {
+liczby[i] = rand () % 5 + 1;
+}
+
+//Sleep
+Application::DoEvents ();	//musi byc
+Sleep (1000);
+
+//blokowanie rzeczy i zmienianie ich widocznosci
+pictureBox1->Enabled = false;
+pictureBox1->Visible = false;
+
+//zmiana rozmiaru formy
+Plansza::width=100;
+
+//zawsze na wierzchu
+TopMost = true;
+
+//zamyka program
+Close ();
+
+//konwersja na int i string
+mianownik = Convert::ToInt16(wartosc2->Text);
+wynik_t->Text =Convert::ToString(licznik + mianownik);
+
+//nowe okno glowne
+forma^ obiekt;
+obiekt = gcnew forma;
+obiekt->Show ();
+
+//do losowania
+#include <stdlib.h>
+
+//konwersja z textBox'a do char imie [128] //do tablicy znakow
+for (int i = 0; i < imi->TextLength; i++) {
+	dane[inde].imie[i] = imi->Text[i];
+	dane[inde].imie[i + 1] = '\0';}
+
+//namiana z string* na String^ wersja 2
+string* nazwaZwierzaka;
+nazwaZwierzaka = new string ("kon");
+String ^tekst;
+tekst = gcnew String ("");tekst = gcnew String ("");
+for (int i = 0; i < nazwaZwierzaka->length (); i++) {
+	tekst += Convert::ToChar (nazwaZwierzaka->data()[i]);}
+
+//ref class ?? co to
+
+//string w ref class
+string* nazwaZwierzaka;	//w ref class musi byc wskaznik
+nazwaZwierzaka = new string ("kon");
+
+//w ref class nie mozna potem uzyc * na klase 

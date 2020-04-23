@@ -1,0 +1,47 @@
+SOLID (programowanie obiektowe)
+
+debug vs release
+precompilacja
+embedded
+how to use debugger
+Token in cpp
+funkcje nie zwracajace wyjatkow
+dynamiczne struktury
+wzorce projektowe
+inteligentne wskazniki
+explicit
+const corectness
+operatory relacyjne
+
+
+ostream type
+istream type
+ clog
+
+//temp 	//temporary
+
+#include <cctype>
+
+
+#include <iomanip>  
+cout << setprecision (100000);	//how many numbers has to be after , 
+std::cout << std::setfill ('0')
+<< std::setw (2) << month
+<< std::setw (2) << day;
+
+system ("title Simple-Game");	//change title consol to ...
+
+#pragma warning(disable : 4996)	//disable worning message
+
+#define _USE_MATH_DEFINES
+
+SetConsoleTextAttribute (GetStdHandle (STD_OUTPUT_HANDLE), 15);	//change text color
+
+#pragma hdrstop 	//end headlines
+
+system("color A2");			//background/text (hex)
+
+cout << boolalpha;			//false is a false not a 0 only in cout
+cout << noboolalpha;		//false is a 0
+
+Beep (500, 200);	// :-)

@@ -1,0 +1,29 @@
+"kurs walutowe"			//wyswietli tylko te konkretne slowa
+hotele warszawa OR krakow		//wyswietli hotele w warszawie lub hotele w krakowie	//zaniast OR moze byc ||
+"najwieksze" * w polsce		//wyswietla wszystko co jest pomiedzy najwieksze a w polsce
+najwieksze *			//wyswietli najwieksze i cos po nim
+* najwieksze 			//wyswietli wszystko co jest przed slowem najwieksze
+kursy -walut			//szykaj kursow ale nie walut
+site:wikipedia.org polska		//szukaj informacji o polsce w wikipedi
+site:gov polska			//wszystkie strony z koncowka .gov
+site:co.uk polska			//wszystkie strony z koncowka .co.uk
+~kursy				//synonimy podpowiadane przez google
+~kraj				//synonimy podpowiadane przez google
+igrzyska olimpijskie 1960..1980	//wszysko co o igrzyskach olimpijskich w latach 1960-1980
+related:www.wikipedia.org		//szukaj strony podobej do
+150euro				//przelicz na pln od razu //usd dolary
+50pln w usd			//przelicz z pln na usd
+50pln w gbp			//przelicz z pln na gbp
+1+23-3*(3-4)			//dzialania sam policzy
+1cm w calach			//przelcz cm na cale
+1rok w sekundach			//przelczy ile rok ma sekund
+intitle:polska wiadomosci		//wyswietl to co ma w tytule polska a wiadomoci moze byc gdzies indziej
+allintitle:polska wiadomosci		//wyswietl to co ma w tytule polska wiadomosci
+polska intitle:wiadomosci		//wyswietl to co ma w tytule wiadomosci a polska moze byc gdzies indziej
+inurl:polska			//w adresie musi byc polska //all mozna dodac wszedzie
+intext:polska			//musi wystapic w wnetrzu strony
+intext:polska inurl:polska		//musi byc tu i tu
+inanchor:polska			//musi byc w opisie strony
+filetype:pdf polska			//pliki pdf z polska
+
+

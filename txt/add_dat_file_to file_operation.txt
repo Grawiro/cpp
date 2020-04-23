@@ -1,0 +1,59 @@
+
+class twoPoint {
+public:
+	int firstNumber, secondNumber;
+};
+
+struct Infomation {
+	double growth;
+	std::string name;
+};
+
+
+
+	/*--------------------------------------------------------------------*/
+
+	int numberOne = 3;
+
+	twoPoint One;
+	One.firstNumber = 1;
+	One.secondNumber = 2;
+
+	Infomation Kamil;
+	Kamil.growth = 170.2;
+	Kamil.name = "Kamil";
+
+	int nameSize = Kamil.name.size ();
+
+	//write file with the dat extension
+	std::ofstream datOut ("binary.dat", std::ios::binary);
+	if (datOut.is_open ()) {
+		datOut.write ((char*)&numberOne, sizeof (numberOne));
+		datOut.write ((char*)&One, sizeof (twoPoint));
+		datOut.write ((char*)&Kamil.growth, sizeof (Kamil.growth));
+		datOut.write ((char*)&nameSize, sizeof (int));
+		datOut.write (Kamil.name.c_str (), nameSize);
+
+		datOut.close ();
+	}
+
+	/*--------------------------------------------------------------------*/
+
+	int numberTwo{ };
+	twoPoint Two;
+	Infomation Tery;
+
+	int stringSize{ };
+
+	//read file with the dat extension
+	std::ifstream datIn ("binary.dat", std::ios::binary);
+	if (datIn.is_open ()) {
+		datIn.read ((char*)&numberTwo, sizeof (numberTwo));
+		datIn.read ((char*)&Two, sizeof (twoPoint));
+		datIn.read ((char*)&Tery.growth, sizeof (Tery.growth));
+		datIn.read ((char*)&stringSize, sizeof (int));
+		Tery.name.resize (stringSize);
+		datIn.read ((char*)&Tery.name[0], stringSize);
+
+		datIn.close ();
+	}
